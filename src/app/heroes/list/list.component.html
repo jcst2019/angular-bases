@@ -1,0 +1,30 @@
+<h3>Listado de Héroes</h3>
+
+<!-- <ul class="mt-2 list-group">
+    <li class="list-group-item">Spiderman</li>
+    <li class="list-group-item">Iroman</li>
+    <li class="list-group-item">Hulk</li>
+    <li class="list-group-item">Thor</li>
+    <li class="list-group-item">Juan Solar</li>
+</ul> -->
+
+<div *ngIf="deleteHero; else nohtingWasDeleted">
+    <h3>Héroe Borrado <small class="text-danger">{{deleteHero}}</small>  </h3>
+</div>
+
+<!-- <h3 *ngIf="!deleteHero" >No ha Borrado nada. </h3> // Esta linea evalua 1 vez mas la variable deleteHero y No es eficiente. 
+ Se debe usar if else-->
+<ng-template #nohtingWasDeleted>
+    <h3>No ha Borrado nada. </h3>
+</ng-template>
+
+<button 
+    *ngIf="heroNames.length>0"
+    (click)="removeLastHero()" 
+    class="btn btn-outline-danger">
+    Borrar Último Héroe
+</button>
+
+<ul class="mt-2 list-group">
+    <li *ngFor="let name of heroNames" class="list-group-item">{{name}}</li>
+</ul>
